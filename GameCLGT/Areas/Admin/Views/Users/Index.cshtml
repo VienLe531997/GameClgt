@@ -1,0 +1,87 @@
+﻿@model IEnumerable<GameCLGT.Areas.Admin.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.User_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User_pass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User_phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User_avatar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User_point)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User_level)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.History.ID_game)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vote.ID_game)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User_pass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User_phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User_avatar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User_point)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User_level)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.History.ID_game)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vote.ID_game)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

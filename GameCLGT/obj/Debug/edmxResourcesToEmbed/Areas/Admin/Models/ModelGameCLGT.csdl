@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CLGTgame_item_data_mainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADV">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ADV_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ADV_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ADV_link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ADV_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Category_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Category_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="List_game_cate" Relationship="Self.FK_List_game_cate_Category" FromRole="Category" ToRole="List_game_cate" />
+  </EntityType>
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Game_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Game_link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Game_detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Game_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Game_rate" Type="Double" />
+    <Property Name="Game_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Game_countPlay" Type="Int32" Nullable="false" />
+    <Property Name="Game_KPIpoint" Type="Int32" />
+    <Property Name="Game_KPIexp" Type="Int32" />
+    <NavigationProperty Name="History" Relationship="Self.FK_History_Game" FromRole="Game" ToRole="History" />
+    <NavigationProperty Name="List_game_cate" Relationship="Self.FK_List_game_cate_Game" FromRole="Game" ToRole="List_game_cate" />
+    <NavigationProperty Name="List_type_game" Relationship="Self.FK_List_type_game_Game" FromRole="Game" ToRole="List_type_game" />
+    <NavigationProperty Name="Vote" Relationship="Self.FK_Vote_Game" FromRole="Game" ToRole="Vote" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ID_game" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ID_user" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="History_date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Game" Relationship="Self.FK_History_Game" FromRole="History" ToRole="Game" />
+    <NavigationProperty Name="User" Relationship="Self.FK_History_User" FromRole="History" ToRole="User" />
+  </EntityType>
+  <EntityType Name="List_game_cate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ID_game" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ID_category" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_List_game_cate_Category" FromRole="List_game_cate" ToRole="Category" />
+    <NavigationProperty Name="Game" Relationship="Self.FK_List_game_cate_Game" FromRole="List_game_cate" ToRole="Game" />
+  </EntityType>
+  <EntityType Name="List_type_game">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ID_game" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ID_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Game" Relationship="Self.FK_List_type_game_Game" FromRole="List_type_game" ToRole="Game" />
+    <NavigationProperty Name="Type" Relationship="Self.FK_List_type_game_Type" FromRole="List_type_game" ToRole="Type" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Type_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="List_type_game" Relationship="Self.FK_List_type_game_Type" FromRole="Type" ToRole="List_type_game" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="User_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_id" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="User_pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="User_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="User_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="User_avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="User_point" Type="Int32" />
+    <Property Name="User_level" Type="Int32" />
+    <NavigationProperty Name="History" Relationship="Self.FK_History_User" FromRole="User" ToRole="History" />
+    <NavigationProperty Name="Vote" Relationship="Self.FK_Vote_User" FromRole="User" ToRole="Vote" />
+  </EntityType>
+  <EntityType Name="Vote">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ID_game" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_user" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Vote_rate" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Game" Relationship="Self.FK_Vote_Game" FromRole="Vote" ToRole="Game" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Vote_User" FromRole="Vote" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_List_game_cate_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="List_game_cate" Type="Self.List_game_cate" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="List_game_cate">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_History_Game">
+    <End Role="Game" Type="Self.Game" Multiplicity="1" />
+    <End Role="History" Type="Self.History" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_List_game_cate_Game">
+    <End Role="Game" Type="Self.Game" Multiplicity="1" />
+    <End Role="List_game_cate" Type="Self.List_game_cate" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="List_game_cate">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_List_type_game_Game">
+    <End Role="Game" Type="Self.Game" Multiplicity="1" />
+    <End Role="List_type_game" Type="Self.List_type_game" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="List_type_game">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vote_Game">
+    <End Role="Game" Type="Self.Game" Multiplicity="1" />
+    <End Role="Vote" Type="Self.Vote" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Vote">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_History_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="History" Type="Self.History" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_List_type_game_Type">
+    <End Role="Type" Type="Self.Type" Multiplicity="1" />
+    <End Role="List_type_game" Type="Self.List_type_game" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="List_type_game">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vote_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Vote" Type="Self.Vote" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Vote">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CLGTgame_item_data_mainEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADVs" EntityType="Self.ADV" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Games" EntityType="Self.Game" />
+    <EntitySet Name="Histories" EntityType="Self.History" />
+    <EntitySet Name="List_game_cate" EntityType="Self.List_game_cate" />
+    <EntitySet Name="List_type_game" EntityType="Self.List_type_game" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Types" EntityType="Self.Type" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Votes" EntityType="Self.Vote" />
+    <AssociationSet Name="FK_List_game_cate_Category" Association="Self.FK_List_game_cate_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="List_game_cate" EntitySet="List_game_cate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_History_Game" Association="Self.FK_History_Game">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="History" EntitySet="Histories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_List_game_cate_Game" Association="Self.FK_List_game_cate_Game">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="List_game_cate" EntitySet="List_game_cate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_List_type_game_Game" Association="Self.FK_List_type_game_Game">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="List_type_game" EntitySet="List_type_game" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vote_Game" Association="Self.FK_Vote_Game">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="Vote" EntitySet="Votes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_History_User" Association="Self.FK_History_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="History" EntitySet="Histories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_List_type_game_Type" Association="Self.FK_List_type_game_Type">
+      <End Role="Type" EntitySet="Types" />
+      <End Role="List_type_game" EntitySet="List_type_game" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vote_User" Association="Self.FK_Vote_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Vote" EntitySet="Votes" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(CLGTgame_item_data_mainModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(CLGTgame_item_data_mainModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

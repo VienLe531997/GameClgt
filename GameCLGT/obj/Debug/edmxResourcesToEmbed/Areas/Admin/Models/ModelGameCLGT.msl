@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CLGTgame_item_data_mainModelStoreContainer" CdmEntityContainer="CLGTgame_item_data_mainEntities">
+    <EntitySetMapping Name="ADVs">
+      <EntityTypeMapping TypeName="CLGTgame_item_data_mainModel.ADV">
+        <MappingFragment StoreEntitySet="ADV">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ADV_name" ColumnName="ADV_name" />
+          <ScalarProperty Name="ADV_image" ColumnName="ADV_image" />
+          <ScalarProperty Name="ADV_link" ColumnName="ADV_link" />
+          <ScalarProperty Name="ADV_description" ColumnName="ADV_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="CLGTgame_item_data_mainModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Category_name" ColumnName="Category_name" />
+          <ScalarProperty Name="Category_image" ColumnName="Category_image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="CLGTgame_item_data_mainModel.Game">
+        <MappingFragment StoreEntitySet="Game">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Game_name" ColumnName="Game_name" />
+          <ScalarProperty Name="Game_link" ColumnName="Game_link" />
+          <ScalarProperty Name="Game_detail" ColumnName="Game_detail" />
+          <ScalarProperty Name="Game_description" ColumnName="Game_description" />
+          <ScalarProperty Name="Game_rate" ColumnName="Game_rate" />
+          <ScalarProperty Name="Game_image" ColumnName="Game_image" />
+          <ScalarProperty Name="Game_countPlay" ColumnName="Game_countPlay" />
+          <ScalarProperty Name="Game_KPIpoint" ColumnName="Game_KPIpoint" />
+          <ScalarProperty Name="Game_KPIexp" ColumnName="Game_KPIexp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Histories">
+      <EntityTypeMapping TypeName="CLGTgame_item_data_mainModel.History">
+        <MappingFragment StoreEntitySet="History">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_game" ColumnName="ID_game" />
+          <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+          <ScalarProperty Name="History_date" ColumnName="History_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="List_game_cate">
+      <EntityTypeMapping TypeName="CLGTgame_item_data_mainModel.List_game_cate">
+        <MappingFragment StoreEntitySet="List_game_cate">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_game" ColumnName="ID_game" />
+          <ScalarProperty Name="ID_category" ColumnName="ID_category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="List_type_game">
+      <EntityTypeMapping TypeName="CLGTgame_item_data_mainModel.List_type_game">
+        <MappingFragment StoreEntitySet="List_type_game">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_game" ColumnName="ID_game" />
+          <ScalarProperty Name="ID_type" ColumnName="ID_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CLGTgame_item_data_mainModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Types">
+      <EntityTypeMapping TypeName="CLGTgame_item_data_mainModel.Type">
+        <MappingFragment StoreEntitySet="Type">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Type_name" ColumnName="Type_name" />
+          <ScalarProperty Name="Type_image" ColumnName="Type_image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="CLGTgame_item_data_mainModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="User_name" ColumnName="User_name" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="User_pass" ColumnName="User_pass" />
+          <ScalarProperty Name="User_email" ColumnName="User_email" />
+          <ScalarProperty Name="User_phone" ColumnName="User_phone" />
+          <ScalarProperty Name="User_avatar" ColumnName="User_avatar" />
+          <ScalarProperty Name="User_point" ColumnName="User_point" />
+          <ScalarProperty Name="User_level" ColumnName="User_level" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Votes">
+      <EntityTypeMapping TypeName="CLGTgame_item_data_mainModel.Vote">
+        <MappingFragment StoreEntitySet="Vote">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_game" ColumnName="ID_game" />
+          <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+          <ScalarProperty Name="Vote_rate" ColumnName="Vote_rate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="CLGTgame_item_data_mainModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="CLGTgame_item_data_mainModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="CLGTgame_item_data_mainModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="CLGTgame_item_data_mainModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CLGTgame_item_data_mainModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="CLGTgame_item_data_mainModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CLGTgame_item_data_mainModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="CLGTgame_item_data_mainModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="CLGTgame_item_data_mainModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,105 @@
+﻿@model IEnumerable<GameCLGT.Areas.Admin.Models.Game>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Game_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Game_link)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Game_detail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Game_description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Game_rate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Game_image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Game_countPlay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Game_KPIpoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Game_KPIexp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.History.ID_game)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.List_game_cate.ID_game)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.List_type_game.ID_game)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vote.ID_game)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Game_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Game_link)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Game_detail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Game_description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Game_rate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Game_image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Game_countPlay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Game_KPIpoint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Game_KPIexp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.History.ID_game)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.List_game_cate.ID_game)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.List_type_game.ID_game)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vote.ID_game)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

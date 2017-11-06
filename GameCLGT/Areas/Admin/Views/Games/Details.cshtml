@@ -1,0 +1,122 @@
+﻿@model GameCLGT.Areas.Admin.Models.Game
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Game</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Game_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game_link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game_link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game_detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game_detail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game_rate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game_rate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game_image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game_image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game_countPlay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game_countPlay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game_KPIpoint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game_KPIpoint)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game_KPIexp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game_KPIexp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.History.ID_game)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.History.ID_game)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.List_game_cate.ID_game)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.List_game_cate.ID_game)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.List_type_game.ID_game)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.List_type_game.ID_game)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vote.ID_game)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vote.ID_game)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
