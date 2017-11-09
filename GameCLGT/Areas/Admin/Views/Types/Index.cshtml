@@ -1,12 +1,26 @@
-﻿@model IEnumerable<GameCLGT.Areas.Admin.Models.Type>
+﻿@model IEnumerable<CLGTgame.Areas.Admin.Models.Type>
 
 @{
     ViewBag.Title = "Index";
 }
+@using PagedList.Mvc;
+@using PagedList;
 
-<h2>Index</h2>
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" class="form-control" name="search" id="search" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><div class="glyphicon glyphicon-search"></div></button>
+                </span>
+            </div>
+        </div>
+    </div>
+}
 
-<p>
+<p class="btn btn-default">
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -29,7 +43,7 @@
             @Html.DisplayFor(modelItem => item.Type_name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Type_image)
+            <img src="@Html.DisplayFor(modelItem => item.Type_image)" width="30"/>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.List_type_game.ID_game)
@@ -43,3 +57,4 @@
 }
 
 </table>
+@Html.PagedListPager((IPagedList)ViewBag.Content, page => Url.Action("Index", new { page }))

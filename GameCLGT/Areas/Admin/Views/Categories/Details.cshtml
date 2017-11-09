@@ -1,4 +1,4 @@
-﻿@model GameCLGT.Areas.Admin.Models.Category
+﻿@model CLGTgame.Areas.Admin.Models.Category
 
 @{
     ViewBag.Title = "Details";
@@ -23,7 +23,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Category_image)
+            <img src="@Html.DisplayFor(model => model.Category_image)" width="30"/>
         </dd>
 
         <dt>
@@ -36,7 +36,9 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+<div class="btn btn-default">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
+</div>
+<div class="btn btn-default">
     @Html.ActionLink("Back to List", "Index")
-</p>
+</div>

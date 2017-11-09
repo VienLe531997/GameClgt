@@ -6,19 +6,34 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using GameCLGT.Areas.Admin.Models;
+using CLGTgame.Areas.Admin.Models;
+using PagedList;
+using System.IO;
 
-namespace GameCLGT.Areas.Admin.Controllers
+namespace CLGTgame.Areas.Admin.Controllers
 {
     public class TypesController : Controller
     {
         private CLGTgame_item_data_mainEntities db = new CLGTgame_item_data_mainEntities();
 
         // GET: Admin/Types
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var types = db.Types.Include(t => t.List_type_game);
-            return View(types.ToList());
+            var pt = page ?? 1;
+            var content = types.OrderBy(t => t.ID).ToPagedList(pt, 20);
+            ViewBag.Content = content;
+            return View(content);
+        }
+        [HttpPost]
+        public ActionResult Index(int? page, FormCollection f)
+        {
+            string s = f["search"];
+            var types = db.Types.Where(t => t.Type_name.Contains(s));
+            var pt = page ?? 1;
+            var content = types.OrderBy(t => t.ID).ToPagedList(pt, 20);
+            ViewBag.Content = content;
+            return View(content);
         }
 
         // GET: Admin/Types/Details/5
@@ -48,8 +63,16 @@ namespace GameCLGT.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Type_name,Type_image")] Models.Type type)
+        public ActionResult Create([Bind(Include = "ID,Type_name,Type_image")] Models.Type type, HttpPostedFileBase file)
         {
+            if (file != null)
+            {
+                string img = Path.GetFileName(file.FileName);
+                string path = Path.Combine(Server.MapPath("~/Content/Images/Types"), img);
+                file.SaveAs(path);
+                type.Type_image = "/Content/Images/Types/" + file.FileName;
+            }
+
             if (ModelState.IsValid)
             {
                 type.ID = Guid.NewGuid();
@@ -83,8 +106,15 @@ namespace GameCLGT.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Type_name,Type_image")] Models.Type type)
+        public ActionResult Edit([Bind(Include = "ID,Type_name,Type_image")] Models.Type type, HttpPostedFileBase file)
         {
+            if (file != null)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var filePath = Path.Combine(Server.MapPath("~/Content/Images/Types/"), fileName);
+                file.SaveAs(filePath);
+                type.Type_image = "/Content/Images/Types/" + file.FileName;
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(type).State = EntityState.Modified;
@@ -116,6 +146,17 @@ namespace GameCLGT.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(Guid id)
         {
             Models.Type type = db.Types.Find(id);
+
+            var fileName = type.Type_image;
+            var filePath = Server.MapPath(fileName);
+            System.IO.File.Delete(filePath);
+
+            List<List_type_game> lstType = new List<List_type_game>();
+            foreach(var item in lstType)
+            {
+                db.List_type_game.Remove(item);
+            }
+
             db.Types.Remove(type);
             db.SaveChanges();
             return RedirectToAction("Index");
