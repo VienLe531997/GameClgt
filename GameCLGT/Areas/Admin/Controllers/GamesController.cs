@@ -21,6 +21,8 @@ namespace GameCLGT.Areas.Admin.Controllers
             return View(games.ToList());
         }
 
+		
+		
         // GET: Admin/Games/Details/5
         public ActionResult Details(Guid? id)
         {
