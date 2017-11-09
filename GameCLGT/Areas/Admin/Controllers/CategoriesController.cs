@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using CLGTgame.Areas.Admin.Models;
 using System.IO;
 using PagedList;
+using GameCLGT.Areas.Admin.Models;
 
 namespace CLGTgame.Areas.Admin.Controllers
 {
