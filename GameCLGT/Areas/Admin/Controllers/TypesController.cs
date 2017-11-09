@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using CLGTgame.Areas.Admin.Models;
 using PagedList;
 using System.IO;
+using GameCLGT.Areas.Admin.Models;
 
 namespace CLGTgame.Areas.Admin.Controllers
 {
@@ -43,7 +43,7 @@ namespace CLGTgame.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Models.Type type = db.Types.Find(id);
+            GameCLGT.Areas.Admin.Models.Type type = db.Types.Find(id);
             if (type == null)
             {
                 return HttpNotFound();
@@ -63,7 +63,7 @@ namespace CLGTgame.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Type_name,Type_image")] Models.Type type, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "ID,Type_name,Type_image")] GameCLGT.Areas.Admin.Models.Type type, HttpPostedFileBase file)
         {
             if (file != null)
             {
@@ -92,7 +92,7 @@ namespace CLGTgame.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Models.Type type = db.Types.Find(id);
+            GameCLGT.Areas.Admin.Models.Type type = db.Types.Find(id);
             if (type == null)
             {
                 return HttpNotFound();
@@ -106,7 +106,7 @@ namespace CLGTgame.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Type_name,Type_image")] Models.Type type, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "ID,Type_name,Type_image")] GameCLGT.Areas.Admin.Models.Type type, HttpPostedFileBase file)
         {
             if (file != null)
             {
@@ -132,7 +132,7 @@ namespace CLGTgame.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Models.Type type = db.Types.Find(id);
+            GameCLGT.Areas.Admin.Models.Type type = db.Types.Find(id);
             if (type == null)
             {
                 return HttpNotFound();
@@ -145,7 +145,7 @@ namespace CLGTgame.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Models.Type type = db.Types.Find(id);
+            GameCLGT.Areas.Admin.Models.Type type = db.Types.Find(id);
 
             var fileName = type.Type_image;
             var filePath = Server.MapPath(fileName);
